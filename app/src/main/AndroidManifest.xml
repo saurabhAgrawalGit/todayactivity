@@ -13,6 +13,13 @@
         android:theme="@style/Theme.TodayActivity"
         tools:targetApi="31">
         <activity
+            android:name=".add_task"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".splashScreen"
             android:exported="false">
             <meta-data

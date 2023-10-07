@@ -26,11 +26,17 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
 
 
+
+
+
+        app:layout_constraintBottom_toTopOf="@+id/btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

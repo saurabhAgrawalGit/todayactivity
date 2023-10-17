@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 public class TaskTable {
     @PrimaryKey(autoGenerate = true)
     int id ;
+    String time;
+    String date;
     String taskName;
     String categories;
     String note;
@@ -20,8 +22,11 @@ public class TaskTable {
 
     }
 
-    public TaskTable(int id, String taskName, String categories, String note, String sTime, String eTime, int status, int iconID) {
+
+    public TaskTable(int id, String time, String date, String taskName, String categories, String note, String sTime, String eTime, int status, int iconID) {
         this.id = id;
+        this.time = time;
+        this.date = date;
         this.taskName = taskName;
         this.categories = categories;
         this.note = note;
@@ -31,6 +36,21 @@ public class TaskTable {
         this.iconID = iconID;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public int getId() {
         return id;

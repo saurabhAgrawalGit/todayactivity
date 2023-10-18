@@ -27,11 +27,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.Taskname= itemView.findViewById(R.id.taskname);
+            //this.Taskname= itemView.findViewById(R.id.taskname);
             this.cat= itemView.findViewById(R.id.textView2);
             this.start= itemView.findViewById(R.id.start_time);
             this.end= itemView.findViewById(R.id.end_Time);
-            this.imageView= itemView.findViewById(R.id.img);
+          //  this.imageView= itemView.findViewById(R.id.img);
 
         }
     }
@@ -51,7 +51,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.MyViewHolder holder, int position) {
         TaskTable taskTable = arrayList.get(position);
-        holder.Taskname.setText(taskTable.getTaskName());
+//        holder.Taskname.setText(taskTable.getTaskName());
         holder.cat.setText(taskTable.getCategories());
         holder.start.setText(taskTable.getsTime());
         holder.end.setText(taskTable.geteTime());

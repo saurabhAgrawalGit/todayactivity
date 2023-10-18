@@ -3,10 +3,13 @@ package com.example.todayactivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +32,24 @@ public class add_task extends AppCompatActivity {
         end_time = findViewById(R.id.endtime_in);
         decs = findViewById(R.id.info);
         add=findViewById(R.id.add_btn);
+        start_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+        end_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog dialog = new TimePickerDialog(add_task.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                    }
+                },19 ,00,true);
+               dialog.show();
+            }
+        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +59,8 @@ public class add_task extends AppCompatActivity {
                 String time2 =end_time.getText().toString();
                 String dec =decs.getText().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+
 
                 // on below line we are creating a variable
                 // for current date and time and calling a simple date format in it.
@@ -66,7 +89,20 @@ public class add_task extends AppCompatActivity {
 
 
 
+
             }
         });
     }
+    private  void  openDialog()
+    {
+        Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
+        TimePickerDialog dialog = new TimePickerDialog(getApplicationContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            }
+        },19 ,00,true);
+        dialog.show();
+    }
+
 }

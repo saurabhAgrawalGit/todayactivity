@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
          currentDateAndTime = sdf.format(new Date());
 
+
         date_cur.setText(currentDateAndTime);
         recyclerView = findViewById(R.id.recycler);
          button= findViewById(R.id.btn);
@@ -66,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        setRecyclerViewByDate();
         recyclerView.setAdapter(taskAdapter);
+
 
         pre.setOnClickListener(new View.OnClickListener() {
             @Override

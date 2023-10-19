@@ -11,14 +11,20 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
+
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class add_task extends AppCompatActivity {
+
     EditText taskIn, categories, start_time,end_time,decs;
     Button add;
     TaskDatabase taskDatabase;
-    int i =18%30;
+
     MainActivity mainActivity=new MainActivity();
     TaskTable taskTable = new TaskTable();
     @Override
@@ -31,25 +37,35 @@ public class add_task extends AppCompatActivity {
         start_time = findViewById(R.id.start_in);
         end_time = findViewById(R.id.endtime_in);
         decs = findViewById(R.id.info);
-        add=findViewById(R.id.add_btn);
+        add = findViewById(R.id.add_btn);
+
+
         start_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDialog();
             }
         });
+
+
         end_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 TimePickerDialog dialog = new TimePickerDialog(add_task.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
                     }
+
+
                 },19 ,00,true);
                dialog.show();
             }
         });
+
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,11 +77,6 @@ public class add_task extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 
-
-                // on below line we are creating a variable
-                // for current date and time and calling a simple date format in it.
-
-
                 String currentDateAndTime = sdf.format(new Date());
                 taskTable.setTaskName(name);
                 taskTable.setDate(currentDateAndTime);
@@ -73,30 +84,16 @@ public class add_task extends AppCompatActivity {
                 taskTable.setsTime(time1);
                 taskTable.seteTime(time2);
                 taskTable.setNote(dec);
-//                taskDatabase= Room.databaseBuilder(
-//                                getApplicationContext(),
-//                                TaskDatabase.class,
-//                                "ContactDB")
-//                        .allowMainThreadQueries().fallbackToDestructiveMigration()
-//                        .build();
-//                taskDatabase.getTaskDAO().add_task(taskTable);
-
 
                 mainActivity=MySingleton.getInstance().getMyObjectm();
                 mainActivity.Createamount(taskTable);
-
-
-
-
-
 
             }
         });
     }
     private  void  openDialog()
     {
-        Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
-        TimePickerDialog dialog = new TimePickerDialog(getApplicationContext(), new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog dialog = new TimePickerDialog(add_task.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
@@ -104,5 +101,7 @@ public class add_task extends AppCompatActivity {
         },19 ,00,true);
         dialog.show();
     }
+
+
 
 }

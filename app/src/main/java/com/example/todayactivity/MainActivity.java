@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -157,6 +158,30 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(taskAdapter);
         taskAdapter.notifyDataSetChanged();
 
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+       // Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+        setRecyclerViewByDate();
+        taskAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setRecyclerViewByDate();
+
+        taskAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setRecyclerViewByDate();
+        taskAdapter.notifyDataSetChanged();
 
     }
 }
